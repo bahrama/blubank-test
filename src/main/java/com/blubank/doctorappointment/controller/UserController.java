@@ -36,7 +36,7 @@ public class UserController {
     private final UserValidator userValidator;
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody UserDto userDto, BindingResult result) {
+    public ResponseEntity<?> registerUser(@Valid @RequestBody UserDto userDto, BindingResult result) {
         userValidator.validate(userDto,result);
         ResponseEntity<?> errorMap = mapValidationErrorService.mapValidationService(result);
         if(errorMap!=null)
